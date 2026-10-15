@@ -7,9 +7,27 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependencies
+/node_modules
+
+# Production builds
+/dist
+/dist-ssr
+
+# Vercel project settings and local build cache
+/.vercel
+
+# Local environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Test and coverage output
+/coverage
+/playwright-report
+/test-results
+
+# Tool-specific local files
 *.local
 
 # Editor directories and files
