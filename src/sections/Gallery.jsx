@@ -9,7 +9,7 @@ const photos = [
   { src: paneerImage, alt: 'Char-grilled paneer tikka with peppers and lemon', caption: 'A little char, a lot of flavour', shape: '' },
   { src: roomImage, alt: 'Warm dining room with rust-coloured booths and pendant lights', caption: 'A cosy corner for good conversations', shape: '' },
   { src: dessertImage, alt: 'Gulab jamun served in a dark bowl with pistachio', caption: 'Something sweet to finish', shape: '' },
-  { src: butterChickenImage, alt: 'Butter chicken topped with cream and fresh herbs', caption: 'Comfort in every spoonful', shape: 'gallery-tall' },
+  { src: butterChickenImage, alt: 'Butter chicken topped with cream and fresh herbs', caption: 'Comfort in every spoonful', shape: '' },
 ]
 
 export default function Gallery() {

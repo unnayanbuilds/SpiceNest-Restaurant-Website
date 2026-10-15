@@ -868,10 +868,6 @@
   grid-column: span 2;
 }
 
-.gallery-tall {
-  grid-row: span 2;
-}
-
 .gallery-note {
   margin-top: 22px;
   color: var(--muted);
@@ -1491,10 +1487,6 @@
 
   .gallery-wide {
     grid-column: span 2;
-  }
-
-  .gallery-tall {
-    grid-row: span 1;
   }
 
   .gallery-card figcaption {
