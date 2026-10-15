@@ -15,8 +15,10 @@ To capture them, open the site locally, use your browser's screenshot tool, and 
 
 - Responsive home, menu, story, gallery, reservations, contact, and footer sections
 - Searchable, price-sortable menu with category and vegetarian/non-vegetarian filters
+- Dish finder with sample recommendations based on visitor preferences
 - Gallery lightbox with previous/next controls and keyboard navigation
 - Sticky navigation that highlights the section currently in view
+- Mobile reservation shortcut and subtle, reduced-motion-aware section reveals
 - Reservation enquiry form with browser validation and a demo confirmation message
 - Semantic HTML, keyboard focus styles, a skip link, and mobile navigation controls
 - Compressed restaurant and food photography stored with the project

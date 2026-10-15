@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import DishFinder from '../components/DishFinder.jsx'
 import { dietaryFilters, menuCategories, menuItems } from '../data/menuItems.js'
 
 const inr = new Intl.NumberFormat('en-IN', {
@@ -25,6 +26,14 @@ export default function Menu() {
     return 0
   }), [activeCategory, activeDiet, searchQuery, sortOrder])
 
+  function applyFinderPreference(preference) {
+    setActiveCategory(preference.category)
+    setActiveDiet(preference.diet)
+    setSearchQuery('')
+    setSortOrder('featured')
+    document.getElementById('menu-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   return (
     <section className="menu-section" id="menu" aria-labelledby="menu-title">
       <div className="menu-heading">
@@ -37,6 +46,8 @@ export default function Menu() {
           <span className="menu-sample-note">Sample menu · INR</span>
         </div>
       </div>
+
+      <DishFinder onApplyFilter={applyFinderPreference} />
 
       <div className="menu-controls">
         <div className="menu-search-sort">
@@ -92,7 +103,7 @@ export default function Menu() {
       </p>
 
       {visibleItems.length > 0 ? (
-        <div className="menu-grid">
+        <div className="menu-grid" id="menu-list">
           {visibleItems.map((item) => (
             <article className="menu-card" key={item.id}>
               <div className="menu-card-topline">
