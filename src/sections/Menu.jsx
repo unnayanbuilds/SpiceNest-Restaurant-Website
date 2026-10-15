@@ -10,12 +10,20 @@ const inr = new Intl.NumberFormat('en-IN', {
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [activeDiet, setActiveDiet] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
+  const [sortOrder, setSortOrder] = useState('featured')
 
   const visibleItems = useMemo(() => menuItems.filter((item) => {
     const categoryMatches = activeCategory === 'All' || item.category === activeCategory
     const dietMatches = activeDiet === 'all' || item.diet === activeDiet
-    return categoryMatches && dietMatches
-  }), [activeCategory, activeDiet])
+    const searchText = `${item.name} ${item.description} ${item.category}`.toLowerCase()
+    const searchMatches = searchText.includes(searchQuery.trim().toLowerCase())
+    return categoryMatches && dietMatches && searchMatches
+  }).sort((first, second) => {
+    if (sortOrder === 'price-low') return first.price - second.price
+    if (sortOrder === 'price-high') return second.price - first.price
+    return 0
+  }), [activeCategory, activeDiet, searchQuery, sortOrder])
 
   return (
     <section className="menu-section" id="menu" aria-labelledby="menu-title">
@@ -31,6 +39,25 @@ export default function Menu() {
       </div>
 
       <div className="menu-controls">
+        <div className="menu-search-sort">
+          <label className="menu-search">
+            <span className="sr-only">Search dishes</span>
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="Search dishes or ingredients"
+            />
+          </label>
+          <label className="menu-sort">
+            <span>Sort</span>
+            <select value={sortOrder} onChange={(event) => setSortOrder(event.target.value)}>
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: low to high</option>
+              <option value="price-high">Price: high to low</option>
+            </select>
+          </label>
+        </div>
         <div className="category-filters" role="group" aria-label="Filter menu by category">
           {menuCategories.map((category) => (
             <button
@@ -61,7 +88,7 @@ export default function Menu() {
       </div>
 
       <p className="sr-only" aria-live="polite">
-        Showing {visibleItems.length} menu {visibleItems.length === 1 ? 'item' : 'items'}.
+        Showing {visibleItems.length} {visibleItems.length === 1 ? 'dish' : 'dishes'}.
       </p>
 
       {visibleItems.length > 0 ? (
@@ -84,7 +111,20 @@ export default function Menu() {
           ))}
         </div>
       ) : (
-        <p className="menu-empty">No dishes match these filters. Try another category or preference.</p>
+        <div className="menu-empty">
+          <p>No dishes match this search and filter combination.</p>
+          <button
+            type="button"
+            onClick={() => {
+              setSearchQuery('')
+              setActiveCategory('All')
+              setActiveDiet('all')
+              setSortOrder('featured')
+            }}
+          >
+            Reset menu
+          </button>
+        </div>
       )}
 
       <p className="menu-disclaimer">All dishes and prices are fictional examples for this portfolio project.</p>
