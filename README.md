@@ -4,12 +4,15 @@
 
 ## Screenshots
 
-Add current screenshots before publishing the repository. Save them in `docs/screenshots/` and update this section with links, for example:
+### Desktop
 
-- Desktop: `docs/screenshots/home-desktop.png`
-- Mobile: `docs/screenshots/home-mobile.png`
+![SpiceNest desktop homepage](docs/screenshots/home-desktop.png)
 
-To capture them, open the site locally, use your browser's screenshot tool, and save one full desktop view and one phone-width view at those paths.
+### Mobile
+
+<p align="center">
+  <img src="docs/screenshots/home-mobile.png" alt="SpiceNest mobile homepage" width="320">
+</p>
 
 ## Features
 
