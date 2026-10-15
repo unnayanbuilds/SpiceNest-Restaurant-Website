@@ -68,6 +68,16 @@ src/
 
 The reservation form is a front-end demonstration. It validates the fields in the browser and displays a sample confirmation, but it does not send, store, or confirm a real booking. A real restaurant would need a secure backend or a reservation service before accepting bookings through this form.
 
+## Possible future improvements
+
+These are optional next steps and are not included in the current demo:
+
+- Connect reservation enquiries to a real booking service or secure backend.
+- Replace fictional restaurant details with verified business information.
+- Add a content management system so staff can update menu items, prices, hours, and photos.
+- Replace concept photography with final, properly licensed restaurant and food photos.
+- Add automated interaction and accessibility checks as the project grows.
+
 ## Deploy to Vercel
 
 1. Push this project to a GitHub repository.
